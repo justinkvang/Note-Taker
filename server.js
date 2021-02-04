@@ -1,13 +1,16 @@
 // requiring express
-var express = require("express");
+const express = require("express");
+const fs = require("fs");
+const path = require("path");
 // tells node that I am creating an express server 
-var app = express();
+const app = express();
 // sets an initial port that will be used in listener 
-var PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 // sets up the express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(__dirname));
 
 // requiring these route file
 require("./routes/routes.js")(app);

@@ -7,7 +7,7 @@ var fs = require("fs");
 
 // module.exports tells node which bit of code to export from a given file so other files are allowed to access the exported code
 module.exports = function(app) {
-    fs.readFile("db/db.json", (err, data) => {
+    fs.readFile("db/db.json","utf8", (err, data) => {
         if (err) throw err;
         var notes = JSON.parse(data);
     
@@ -22,6 +22,7 @@ module.exports = function(app) {
     var newNotes = req.body;
     notes.push(newNotes);
     updateDb();
+    return console.log("added new note: " + newNote.title);
    });
 
    // get specfic note by id
@@ -33,6 +34,7 @@ module.exports = function(app) {
    app.delete("/api/notes/:id", function(req, res) {
     notes.splice(req.params.id, 1);
     updateDb();
+    console.log("deleted note with id " + req.params.id);
    }); 
    
    // HTML ROUTES
@@ -47,7 +49,7 @@ module.exports = function(app) {
     });
     // updates json file when a note is added/deleted
     function updateDb(){
-        fs.writeFile("db.json", JSON.stringify(notes,'\t'), err => {
+        fs.writeFile("./db/db.json", JSON.stringify(notes,'\t'), err => {
             if (err) throw err;
             return true;
         });
