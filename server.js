@@ -1,35 +1,19 @@
+// requiring express
 var express = require("express");
-var path = require("path");
-
+// tells node that I am creating an express server 
 var app = express();
-var PORT = 3001;
+// sets an initial port that will be used in listener 
+var PORT = process.env.PORT || 3001;
 
+// sets up the express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var notes = [];
+// requiring these route files 
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
 
-app.get("/", function(req, res){
-    res.sendFile(path.join(__dirname, "index.html"));
-});
-
-app.get("/notes", function(req, res){
-    res.sendFile(path.join(__dirname, "notes.html"));
-});
-
-app.get("/api/notes", function(req, res){
-    return res.json(notes);
-});
-
-app.post("/api/notes", function(req, res) {
-  
-    var newNotes = req.body;
-    
-    console.log(newNotes);
-  
-    res.json(newNotes);
-  });
-
+// listener to start our server 
 app.listen(PORT, function() {
     console.log("App listening localhost: " + PORT);
   });
