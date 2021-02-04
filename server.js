@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.static(__dirname));
 
 // requiring these route file
-require("./routes/routes.js")(app);
+require("./routes/routes")(app);
 
 // listener to start our server 
 app.listen(PORT, function() {
