@@ -49,7 +49,7 @@ module.exports = function(app) {
     });
     // updates json file when a note is added/deleted
     function updateDb(){
-        fs.writeFile("./db/db.json", JSON.stringify(notes,'\t'), err => {
+        fs.writeFile("db/db.json", JSON.stringify(notes,'\t'), err => {
             if (err) throw err;
             return true;
         });
