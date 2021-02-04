@@ -21,7 +21,7 @@
   ## Usage
   ![Gif demo of team-profile-generator](./Assets/walk-through.gif)
   
-  When you run `node server.js` in the intergrated terminal, it will let you know `App listening localhost: 3000`. Once you see this, go to your prefered browswer and type in `http://localhost:3000`. The Note Taker app is live on Heroku for your use.   
+  When you run `node server.js` in the intergrated terminal, it will let you know `App listening localhost: 3000`. Once you see this, go to your prefered browswer and type in `localhost:3000`. The Note Taker app is live on Heroku for your use.   
 
   ## License
   [MIT License](https://choosealicense.com/licenses/mit/)

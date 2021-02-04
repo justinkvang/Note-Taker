@@ -7,7 +7,7 @@ var fs = require("fs");
 
 // module.exports tells node which bit of code to export from a given file so other files are allowed to access the exported code
 module.exports = function(app) {
-    fs.readFile("./db/db.json", (err, data) => {
+    fs.readFile("db/db.json", (err, data) => {
         if (err) throw err;
         var notes = JSON.parse(data);
     
