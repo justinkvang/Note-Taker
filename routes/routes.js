@@ -1,9 +1,9 @@
 // path is a built in node function. 
 // path is used to get the correct file path for our html
-var path = require("path");
+const path = require("path");
 // fs (file system) is a built in node function
 // I will be using fs.readFile for the db.json file
-var fs = require("fs");
+const fs = require("fs");
 
 // module.exports tells node which bit of code to export from a given file so other files are allowed to access the exported code
 module.exports = function(app) {
@@ -19,8 +19,8 @@ module.exports = function(app) {
 
    // api notes post route
    app.post("/api/notes", function(req, res){
-    var newNotes = req.body;
-    notes.push(newNotes);
+    var newNote = req.body;
+    notes.push(newNote);
     updateDb();
     return console.log("added new note: " + newNote.title);
    });
@@ -41,11 +41,11 @@ module.exports = function(app) {
     // .get requests the html page
     // home page
     app.get("/", function(req, res){
-        res.sendFile(path.join(__dirname, "../html/index.html"));
+        res.sendFile(path.join(__dirname, "../public/index.html"));
     });
     // notes page
     app.get("/notes", function(req, res){
-        res.sendFile(path.join(__dirname, "../html/notes.html"));
+        res.sendFile(path.join(__dirname, "../public/notes.html"));
     });
     // updates json file when a note is added/deleted
     function updateDb(){
